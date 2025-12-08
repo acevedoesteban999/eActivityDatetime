@@ -3,7 +3,7 @@ from odoo import models,fields,api
 class MailActivity(models.Model):
     _inherit = 'mail.activity'
     
-    datetime_deadline = fields.Datetime('Due Date',index=True,default=fields.Datetime.now().replace(second=0))
+    datetime_deadline = fields.Datetime('Due Date Time',index=True,default=fields.Datetime.now().replace(second=0))
     date_deadline = fields.Date('Due Date',store=True,compute="_compute_date_deadline", index=True, required=True, default=fields.Date.context_today)
     all_day = fields.Boolean("All Day",default=True)
     

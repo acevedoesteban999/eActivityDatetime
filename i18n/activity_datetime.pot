@@ -45,11 +45,11 @@ msgstr ""
 
 #. module: activity_datetime
 #: model:ir.model.fields,field_description:activity_datetime.field_mail_activity__date_deadline
-#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity__datetime_deadline
 msgid "Due Date"
 msgstr ""
 
 #. module: activity_datetime
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity__datetime_deadline
 #: model:ir.model.fields,field_description:activity_datetime.field_mail_activity_schedule__datetime_deadline
 msgid "Due Date Time"
 msgstr ""
