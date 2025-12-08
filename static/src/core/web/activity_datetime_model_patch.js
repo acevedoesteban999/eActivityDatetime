@@ -11,7 +11,7 @@ patch(Activity.prototype,{
     },
     
     get dateDeadlineFormatted() {
-        if(this.datetime_deadline)
+        if(!this.all_day)
             return formatDateTime(this.datetime_deadline);
         return formatDate(this.date_deadline);
     },
