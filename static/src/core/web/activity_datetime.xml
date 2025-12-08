@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-inherit="mail.Activity" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o-mail-Activity-info')]//span[@t-else='']" position="replace">
+            <t t-else="">
+                <span t-attf-class="fw-bolder {{delayTime>0?'text-warning':'text-danger'}}">
+                    Today 
+                </span>
+                <em class="text-muted" t-esc="datetimeDeadLine"/> 
+            </t>
+        </xpath>
+    </t>
+</templates>
