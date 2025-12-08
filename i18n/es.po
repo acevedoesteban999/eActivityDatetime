@@ -1,0 +1,72 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* activity_datetime
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e-20251205\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-08 17:14+0000\n"
+"PO-Revision-Date: 2025-12-08 12:17\n"
+"Last-Translator: PoTranslator <acevedoesteban999@gmail.com>\n"
+"Language-Team: PoTranslator <acevedoesteban999@gmail.com>\n"
+"Language: es\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: PoTranslator\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. module: activity_datetime
+#: model:ir.model,name:activity_datetime.model_mail_activity
+msgid "Activity"
+msgstr "Actividad"
+
+#. module: activity_datetime
+#: model:ir.model,name:activity_datetime.model_mail_activity_type
+msgid "Activity Type"
+msgstr "Tipo de actividad"
+
+#. module: activity_datetime
+#: model:ir.model,name:activity_datetime.model_mail_activity_schedule
+msgid "Activity schedule plan Wizard"
+msgstr "Asistente de planificación de actividades"
+
+#. module: activity_datetime
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity__all_day
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity_schedule__all_day
+msgid "All Day"
+msgstr "Todo el día"
+
+#. module: activity_datetime
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity__display_name
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity_schedule__display_name
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity_type__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: activity_datetime
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity__date_deadline
+msgid "Due Date"
+msgstr "Fecha de vencimiento"
+
+#. module: activity_datetime
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity__datetime_deadline
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity_schedule__datetime_deadline
+msgid "Due Date Time"
+msgstr "Tiempo de vencimiento"
+
+#. module: activity_datetime
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity__id
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity_schedule__id
+#: model:ir.model.fields,field_description:activity_datetime.field_mail_activity_type__id
+msgid "ID"
+msgstr "ID"
+
+#. module: activity_datetime
+#. odoo-javascript
+#: code:addons/activity_datetime/static/src/core/web/activity_datetime.xml:0
+msgid "Today"
+msgstr "Hoy"

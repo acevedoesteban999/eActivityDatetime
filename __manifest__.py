@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Activity DateTime',
-    'version': '19.0.0.1',
+    'version': '19.1.0.0',
     'summary': """ Activity DateTime """,
-    'author': 'esteban.acevedo@qa-bit.com, acevedoesteban999@gmail.com',
-    'website': '',
+    'author': 'acevedoesteban999@gmail.com , esteban.acevedo@qa-bit.com',
+    'website': 'https://acevedoesteban999/eActivityDatetime',
     'category': '',
     'depends': ['base', 'mail','web'],
     'data': [
@@ -17,7 +17,7 @@
         ],
     },
     
-    'application': True,
+    'application': False,
     'installable': True,
     'auto_install': False,
     'license': 'LGPL-3',

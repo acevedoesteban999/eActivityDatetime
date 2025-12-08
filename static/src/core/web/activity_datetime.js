@@ -37,7 +37,6 @@ patch(Activity.prototype,{
         if (delay === 0) {
             const msToEvent = deadline.diff(now, "milliseconds").milliseconds;
             msUntilUpdate = msToEvent > 0 ? msToEvent : getMsToTomorrow();
-            console.log(msUntilUpdate)
         } else 
             msUntilUpdate = getMsToTomorrow();
         
@@ -48,12 +47,15 @@ patch(Activity.prototype,{
     },
     //Now Update At Nigth or in Event
     updateDelayAtNight() {
-        this.updateDelayAtEventOrNight()
+        if(this.props.activity.all_day)
+            this.updateDelayAtEventOrNight()
+        else
+            super.updateDelayAtNight()
     },
 
     async edit(){
         super.edit();
-        this.updateDelayAtEventOrNight();
+        this.updateDelayAtNight();
     }
 
     
