@@ -8,7 +8,7 @@ export class ERemainingDaysDatetime extends RemainingDaysField {
     }
     
     get dateTimeValue(){
-      if(this.props.record.data.all_day)
+      if(!this.props.record.data.all_day && Math.abs(this.diffDays) <= 2)
         return " (" + this.props.record.data.datetime_deadline.toFormat('HH:mm') + ")";
       return ""
     }
