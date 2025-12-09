@@ -14,6 +14,7 @@
     'assets':{
         'web.assets_backend':[
             'e_activity_datetime/static/src/core/web/*',
+            'e_activity_datetime/static/src/components/**/*',
         ],
     },
     
