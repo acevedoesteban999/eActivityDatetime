@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates>
     <t t-inherit="mail.Activity" t-inherit-mode="extension">
-        <xpath expr="//div[hasclass('o-mail-Activity-info')]//span[@t-else='']" position="before">
-            <t t-elif="!props.activity.all_day">
-                <span t-attf-class="fw-bolder {{delayTime>0?'text-warning':'text-danger'}}">
-                    Today 
-                </span>
-                <em class="text-muted" t-esc="datetimeDeadLine"/> 
+        <xpath expr="//div[hasclass('o-mail-Activity-info')]//span[@t-else='']" position="replace">
+            <span t-else="" t-attf-class="fw-bolder {{(!props.activity.all_day &amp; &amp; delayTime>0)?'text-warning':'text-danger'}}">
+                Today: 
+            </span>
+        </xpath>
+        <xpath expr="//div[hasclass('o-mail-Activity-info')]//span[@t-else='']" position="after">
+            <t t-if="!props.activity.all_day and [0,1,-1].includes(delay) ">
+               <em class="ps-1 text-muted" t-esc="datetimeDeadLine"/> 
             </t>
         </xpath>
     </t>

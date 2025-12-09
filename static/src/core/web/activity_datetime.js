@@ -14,49 +14,45 @@ patch(Activity.prototype,{
     get datetimeDeadLine(){
         return formatDateTime(this.props.activity.datetime_deadline,{format:"HH:mm",tz:user.tz})
     },
+    get millisecondToFullMinit(){
+        return 1000*(60 - this.props.activity.datetime_deadline.second)
+    },
+
     get delayTime(){
-        return this.props.activity.datetime_deadline.diff(DateTime.now())
+        return this.props.activity.datetime_deadline.diff(DateTime.now()) + this.millisecondToFullMinit
     },
     updateDelayAtEventOrNight(){
         browser.clearTimeout(this.updateDelayMidnightTimeout);
-        
-        const deadline = this.props.activity.datetime_deadline || this.props.activity.date_deadline;
-        
-        if (!deadline) {
-            this.updateDelayMidnightTimeout = browser.setTimeout(
-                () => this.render(),
-                getMsToTomorrow() + 100
-            );
-            return;
-        }
-        
-        const now = DateTime.now();
-        const delay = this.delay;
-        let msUntilUpdate;
-        
-        if (delay === 0) {
-            const msToEvent = deadline.diff(now, "milliseconds").milliseconds;
-            msUntilUpdate = msToEvent > 0 ? msToEvent : getMsToTomorrow();
-        } else 
-            msUntilUpdate = getMsToTomorrow();
-        
-        this.updateDelayMidnightTimeout = browser.setTimeout(
-            () => this.render(),
-            msUntilUpdate + 100
-        );
+        if (this.props.activity.datetime_deadline && this.delay === 0) {
+            let msUntilUpdate = this.delayTime
+            if( msUntilUpdate > 0){
+                console.log(msUntilUpdate)
+                this.updateDelayMidnightTimeout = browser.setTimeout(
+                    () => {
+                        this.render();
+                        super.updateDelayAtNight();
+                    },
+                    msUntilUpdate + 100
+                );
+                return
+            }
+        } 
+        super.updateDelayAtNight();
     },
     //Now Update At Nigth or in Event
     updateDelayAtNight() {
-        if(this.props.activity.all_day)
+        if(!this.props.activity.all_day)
             this.updateDelayAtEventOrNight()
         else
             super.updateDelayAtNight()
     },
 
-    async edit(){
-        super.edit();
-        this.updateDelayAtNight();
-    }
+        async edit(){
+            await super.edit();
+            let datetime_deadline = await this.orm.read("mail.activity", [this.props.activity.id], ["datetime_deadline"]);
+            this.props.activity.datetime_deadline = datetime_deadline[0].datetime_deadline;
+            this.updateDelayAtNight();
+        }
 
     
 });
