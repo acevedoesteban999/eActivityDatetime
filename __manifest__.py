@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Activity DateTime',
+    'name': 'E Activity DateTime',
     'version': '19.1.1',
     'summary': """ Activity DateTime """,
     'author': 'acevedoesteban999@gmail.com , esteban.acevedo@qa-bit.com',
@@ -13,7 +13,7 @@
     ],
     'assets':{
         'web.assets_backend':[
-            'activity_datetime/static/src/core/web/*',
+            'e_activity_datetime/static/src/core/web/*',
         ],
     },
     
