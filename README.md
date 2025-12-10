@@ -16,7 +16,12 @@ This Odoo module enhances the standard `mail.activity` functionality by adding t
 
 - **List and Kanban Views:** The "Due Date" column is enhanced to show the time alongside the date for non-all-day activities that are due soon.
 
+<div style="text-align:center">LIST</div>
+
 ![Image](./static/description/assets/screenshots/3.png)
+
+<div style="text-align:center">KANBAN</div>
+
 ![Image](./static/description/assets/screenshots/4.png)
 
 - **Integrated Scheduling:** The "Schedule Activity" wizard is updated to incorporate the "All Day" and "Due Date Time" fields, ensuring a consistent experience when planning activities.
