@@ -10,8 +10,11 @@ const { DateTime } = luxon;
 
 export class ERemainingDaysDatetime extends RemainingDaysField {
     setup() {
-      this.props.classes.danger = "days < 0 or (days == 0 and passEventTime)";
-      this.props.classes.warning = "days == 0 and not passEventTime";
+      this.props.classesTimeDate = {
+        ...this.props.classes,
+        danger:"days < 0 or (days == 0 and passEventTime)",
+        warning:"days == 0 and not passEventTime",
+      }
     }
     
     get diffDays() {
@@ -33,8 +36,8 @@ export class ERemainingDaysDatetime extends RemainingDaysField {
         }
         const classNames = {};
         const evalContext = { days: this.diffDays, record: this.props.record.evalContext,passEventTime: this.props.record.data.datetime_deadline < DateTime.now() };
-        for (const decoration in this.props.classes) {
-            const value = evaluateExpr(this.props.classes[decoration], evalContext);
+        for (const decoration in this.props.classesTimeDate) {
+            const value = evaluateExpr(this.props.classesTimeDate[decoration], evalContext);
             classNames[getClassNameFromDecoration(decoration)] = value;
         }
         return classNames;

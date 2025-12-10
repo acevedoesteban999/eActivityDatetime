@@ -44,4 +44,20 @@
             </xpath>
         </field>
     </record>
+
+    <record id="e_datetime_mail_activity_calendary" model="ir.ui.view">
+        <field name="name">mail.activity.view.kanban.inherit</field>
+        <field name="model">mail.activity</field>
+        <field name="inherit_id" ref="mail.mail_activity_view_calendar"/>
+        <field name="arch" type="xml">
+            <xpath expr="//calendar" position="attributes">
+                <attribute name="date_start">datetime_deadline</attribute>
+            </xpath>
+            <xpath expr="//field[@name='date_deadline']" position="replace">
+                <field name="all_day" invisible="1"/>
+                <field name="date_deadline" invisible="not all_day"/>
+                <field name="datetime_deadline" invisible="all_day"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
