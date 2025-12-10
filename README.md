@@ -18,11 +18,11 @@ This Odoo module enhances the standard `mail.activity` functionality by adding t
 
 <div style="text-align:center">LIST</div>
 
-![Image](./static/description/assets/screenshots/3.png)
+###### List View
+![List View](static/description/assets/screenshots/3.png)
 
-<div style="text-align:center">KANBAN</div>
-
-![Image](./static/description/assets/screenshots/4.png)
+###### Kanban View
+![Kanban View](static/description/assets/screenshots/4.png)
 
 - **Integrated Scheduling:** The "Schedule Activity" wizard is updated to incorporate the "All Day" and "Due Date Time" fields, ensuring a consistent experience when planning activities.
 - **Automatic status change in Chatter:** The color in Chatter automatically changes if it corresponds to the time of the activity.
