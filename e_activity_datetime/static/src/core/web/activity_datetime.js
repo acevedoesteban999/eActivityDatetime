@@ -3,7 +3,6 @@ import { Activity } from '@mail/core/web/activity';
 import { computeDelay } from "@mail/utils/common/dates";
 import { browser } from "@web/core/browser/browser";
 import { formatDateTime } from "@web/core/l10n/dates";
-import { user } from "@web/core/user";
 const { DateTime } = luxon;
 
 
@@ -12,7 +11,7 @@ patch(Activity.prototype,{
         super.setup(...arguments);
     },
     get datetimeDeadLine(){
-        return formatDateTime(this.props.activity.datetime_deadline,{format:"HH:mm",tz:user.tz})
+        return formatDateTime(this.props.activity.datetime_deadline,{format:"HH:mm"});
     },
     get millisecondToFullMinit(){
         return 1000*(60 - this.props.activity.datetime_deadline.second)
