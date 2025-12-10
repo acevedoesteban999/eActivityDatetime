@@ -1,7 +1,5 @@
 from odoo import models,fields,api
-from pytz import timezone
-from datetime import datetime
-
+from odoo.addons.e_activity_datetime.utils.date import get_server_utc_datetime
 class MailActivity(models.Model):
     _inherit = 'mail.activity'
     
@@ -21,12 +19,8 @@ class MailActivity(models.Model):
     def _compute_datetime_deadline(self):
         for rec in self:
             if rec.all_day:
-                user_tz_name = self.env.context.get('tz') or self.env.user.tz or 'UTC'
-                user_tz = timezone(user_tz_name)
-                local_datetime = user_tz.localize(
-                    datetime.combine(rec.date_deadline, datetime.min.time().replace(hour=7, minute=0))
-                )
-                rec.datetime_deadline = local_datetime.astimezone(timezone('UTC')).replace(tzinfo=None)
+                utc_datetime = get_server_utc_datetime(7,0)
+                rec.datetime_deadline = utc_datetime
             
             else:
                 rec.datetime_deadline = rec.datetime_deadline or fields.Datetime.now().replace(second=0)
