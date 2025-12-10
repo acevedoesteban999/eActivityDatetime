@@ -1,6 +1,6 @@
 import { patch } from '@web/core/utils/patch';
 import { Activity } from '@mail/core/web/activity';
-import { getMsToTomorrow } from "@mail/utils/common/dates";
+import { computeDelay } from "@mail/utils/common/dates";
 import { browser } from "@web/core/browser/browser";
 import { formatDateTime } from "@web/core/l10n/dates";
 import { user } from "@web/core/user";
@@ -17,7 +17,11 @@ patch(Activity.prototype,{
     get millisecondToFullMinit(){
         return 1000*(60 - this.props.activity.datetime_deadline.second)
     },
-
+    get delay() {
+        if(!this.props.activity.all_day)
+            return Math.floor(computeDelay(this.props.activity.datetime_deadline));
+        return super.delay;
+    },
     get delayTime(){
         return this.props.activity.datetime_deadline.diff(DateTime.now()) + this.millisecondToFullMinit
     },
@@ -26,7 +30,6 @@ patch(Activity.prototype,{
         if (this.props.activity.datetime_deadline && this.delay === 0) {
             let msUntilUpdate = this.delayTime
             if( msUntilUpdate > 0){
-                console.log(msUntilUpdate)
                 this.updateDelayMidnightTimeout = browser.setTimeout(
                     () => {
                         this.render();
