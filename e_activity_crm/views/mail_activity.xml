@@ -9,7 +9,7 @@
                 <group invisible="res_model != 'crm.lead'">
                     <group invisible="not in_crm_stage or repeated">
                         <field name="is_periodic"/>
-                        <field name="repetition_period" required="is_periodic" invisible="not is_periodic"/>
+                        <field name="repetition_period_days" required="is_periodic" invisible="not is_periodic"/>
                     </group>
                     <div invisible="in_crm_stage" class="text-muted">
                         This CRM activity is not in an automatic repetition stage

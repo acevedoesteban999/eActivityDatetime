@@ -49,7 +49,7 @@
                                 <img alt="Screenshot 1" class="img-fluid border rounded mt-2" src="assets/screenshots/1.png"/>
                             </li>
                             <li class="mb-3">
-                                <strong>Generic:</strong> Pick activity type, due-time and for automatic activity creation<br/>
+                                <strong>Generic:</strong> Pick activity type, due-time and repetition for automatic activity creation<br/>
                                 <img alt="Screenshot 2" class="img-fluid border rounded mt-2" src="assets/screenshots/2.png"/>
                             </li>
                             <li class="mb-3">
@@ -67,7 +67,7 @@
                             </li>
                             <li>
                                 <strong>Cron driven:</strong> A lightweight cron job (<code>ir.cron</code>) looks every configurated minutes for activities that match:
-                                <code>active = True, res_model = 'crm.lead', is_periodic = True, repeated = False, repetition_period &gt; 0</code> and duplicates them.
+                                <code>active = True, res_model = 'crm.lead', is_periodic = True, repeated = False, repetition_period_days < 0</code> and duplicates them.
                             </li>
                         </ul>
                     </div>
