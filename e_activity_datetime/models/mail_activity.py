@@ -1,4 +1,6 @@
 from odoo import models,fields,api
+from datetime import datetime
+import pytz
 from odoo.addons.e_activity_datetime.utils.date import get_server_utc_datetime
 class MailActivity(models.Model):
     _inherit = 'mail.activity'
@@ -27,3 +29,30 @@ class MailActivity(models.Model):
                 
     def _to_store_defaults(self, target):
         return super()._to_store_defaults(target) + ['datetime_deadline','all_day']
+    
+    
+    @api.depends('active', 'date_deadline','datetime_deadline','all_day')
+    def _compute_state(self):
+        for record in self.filtered(lambda activity: activity.date_deadline or activity.datetime_deadline):
+            tz = record.user_id.sudo().tz
+            if not record.active:
+                record.state = 'done' 
+            elif record.all_day: 
+                record.state = self._compute_state_from_date(record.date_deadline, tz)
+            else:
+                record.state = self._compute_state_from_datetime(record.datetime_deadline, tz)
+
+    @api.model
+    def _compute_state_from_datetime(self, datetime_deadline, tz=False):
+        datetime_deadline = fields.Datetime.from_string(datetime_deadline)
+        now = datetime.now()
+        if tz:
+            now_utc = pytz.utc.localize(datetime.utcnow())
+            now_tz = now_utc.astimezone(pytz.timezone(tz))
+            now = datetime(year=now_tz.year, month=now_tz.month, day=now_tz.day,hour=now_tz.hour,minute=now_tz.minute)
+        if datetime_deadline < now:
+            return 'overdue'
+        elif (datetime_deadline - now).days == 0:
+            return 'today'
+        else:
+            return 'planned'
