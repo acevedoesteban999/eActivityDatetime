@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="e_activity_crm_inherit_mail_activity_schedule" model="ir.ui.view">
+        <field name="name">mail.activity.schedule.view.form.inherit</field>
+        <field name="model">mail.activity.schedule</field>
+        <field name="inherit_id" ref="mail.mail_activity_schedule_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='note']" position="before">
+                <group invisible="res_model != 'crm.lead'">
+                    <group>
+                        <field name="is_periodic"/>
+                        <field name="repetition_period_days" required="is_periodic" invisible="not is_periodic"/>
+                        <div class="text-muted">
+                            This CRM activity need a an 'automatic repetition stage' for function properly.
+                        </div>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0+e-20251205\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-11 16:17+0000\n"
-"PO-Revision-Date: 2025-12-11 11:18\n"
+"POT-Creation-Date: 2025-12-11 17:53+0000\n"
+"PO-Revision-Date: 2025-12-11 12:54\n"
 "Last-Translator: PoTranslator <acevedoesteban999@gmail.com>\n"
 "Language-Team: PoTranslator <acevedoesteban999@gmail.com>\n"
 "Language: es\n"
@@ -25,10 +25,9 @@ msgid "Activity"
 msgstr "Actividad"
 
 #. module: e_activity_crm
-#. odoo-javascript
-#: code:addons/e_activity_crm/static/src/components/activity_datetime_model/activity_datetime.xml:0
-msgid "Repeated Activity"
-msgstr "Actividad Repetida"
+#: model:ir.model,name:e_activity_crm.model_mail_activity_schedule
+msgid "Activity schedule plan Wizard"
+msgstr "Asistente para planificar el cronograma de actividades"
 
 #. module: e_activity_crm
 #: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__is_auto_create_activity
@@ -94,6 +93,7 @@ msgstr "Llamada de descubrimiento"
 #: model:ir.model.fields,field_description:e_activity_crm.field_crm_lead__display_name
 #: model:ir.model.fields,field_description:e_activity_crm.field_crm_stage__display_name
 #: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__display_name
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity_schedule__display_name
 #: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr "Nombre para mostrar"
@@ -102,6 +102,7 @@ msgstr "Nombre para mostrar"
 #: model:ir.model.fields,field_description:e_activity_crm.field_crm_lead__id
 #: model:ir.model.fields,field_description:e_activity_crm.field_crm_stage__id
 #: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__id
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity_schedule__id
 #: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__id
 msgid "ID"
 msgstr "ID"
@@ -130,14 +131,6 @@ msgid "If checked, the created activity will be periodic."
 msgstr "Si se marca, la actividad creada será periódica."
 
 #. module: e_activity_crm
-#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__is_periodic
-msgid ""
-"If checked, this activity will be created again after being marked as done."
-msgstr ""
-"Si está marcada, esta actividad se creará nuevamente después de marcarla "
-"como realizada."
-
-#. module: e_activity_crm
 #: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__in_crm_stage
 msgid "In CRM Stage"
 msgstr "En etapa de CRM"
@@ -151,6 +144,7 @@ msgstr ""
 
 #. module: e_activity_crm
 #: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__is_periodic
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity_schedule__is_periodic
 msgid "Is Periodic"
 msgstr "Es periódico"
 
@@ -171,6 +165,7 @@ msgstr "Hacer que la actividad sea periódica"
 
 #. module: e_activity_crm
 #: model:ir.model.fields,help:e_activity_crm.field_mail_activity__repetition_period_days
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity_schedule__repetition_period_days
 msgid "Number of days after which the activity will be created again"
 msgstr "Número de días después de los cuales se volverá a crear la actividad"
 
@@ -183,6 +178,12 @@ msgstr "Número de días entre cada repetición de la actividad."
 #: model_terms:ir.ui.view,arch_db:e_activity_crm.res_config_settings_view_form_inherit_e_activity_crm
 msgid "Periodic"
 msgstr "Periódico"
+
+#. module: e_activity_crm
+#. odoo-python
+#: code:addons/e_activity_crm/models/crm_lead.py:0
+msgid "REPEATED"
+msgstr "REPETIDA"
 
 #. module: e_activity_crm
 #: model:ir.actions.server,name:e_activity_crm.ir_cron_regenerate_repetitive_activities_ir_actions_server
@@ -200,7 +201,14 @@ msgid "Repeated"
 msgstr "Repetido"
 
 #. module: e_activity_crm
+#. odoo-javascript
+#: code:addons/e_activity_crm/static/src/components/activity_datetime_model/activity_datetime.xml:0
+msgid "Repeated Activity"
+msgstr "Actividad Repetida"
+
+#. module: e_activity_crm
 #: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__repetition_period_days
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity_schedule__repetition_period_days
 msgid "Repetition Period (Days)"
 msgstr "Periodo de repetición (días)"
 
@@ -214,6 +222,12 @@ msgstr "Periodo de repetición (días)"
 #: code:addons/e_activity_crm/static/src/components/activity_datetime_model/activity_datetime_model_patch.js:0
 msgid "Schedule Activity"
 msgstr "Programar actividad"
+
+#. module: e_activity_crm
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__is_periodic
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity_schedule__is_periodic
+msgid "The activity will be recreated after it reaches the 'Overdue' state."
+msgstr "La actividad se recreará una vez que alcance el estado \"Atrasada\"."
 
 #. module: e_activity_crm
 #. odoo-python
@@ -230,17 +244,19 @@ msgstr ""
 "Esta actividad de CRM no se encuentra en una etapa de repetición automática."
 
 #. module: e_activity_crm
-#. odoo-python
-#: code:addons/e_activity_crm/models/crm_lead.py:0
-msgid "This is an automatic activity created upon lead start."
-msgstr "Esta es una actividad automática creada al iniciar el lead."
+#: model_terms:ir.ui.view,arch_db:e_activity_crm.e_activity_crm_inherit_mail_activity_schedule
+msgid ""
+"This CRM activity need a an 'automatic repetition stage' for function "
+"properly."
+msgstr ""
+"Esta actividad de CRM necesita una 'etapa de repetición automática' para "
+"funcionar correctamente."
 
 #. module: e_activity_crm
 #. odoo-python
 #: code:addons/e_activity_crm/models/crm_lead.py:0
-#: code:addons/xolary-erp/e_activity_crm/models/crm_lead.py:0
-msgid "REPEATED"
-msgstr "REPETIDA"
+msgid "This is an automatic activity created upon lead start."
+msgstr "Esta es una actividad automática creada al iniciar el lead."
 
 #. module: e_activity_crm
 #: model_terms:ir.ui.view,arch_db:e_activity_crm.e_activity_crm_inherit_mail_activity_form

@@ -3,7 +3,7 @@ from odoo import models,fields,api
 class MailActivity(models.Model):
     _inherit = 'mail.activity'
     
-    is_periodic = fields.Boolean("Is Periodic",default=False,help="If checked, this activity will be created again after being marked as done.")
+    is_periodic = fields.Boolean("Is Periodic",default=False,help="The activity will be recreated after it reaches the 'Overdue' state.")
     repetition_period_days = fields.Integer("Repetition Period (Days)",default=1,help="Number of days after which the activity will be created again")
     in_crm_stage = fields.Boolean("In CRM Stage",compute="_compute_in_crm_stage",help="Indicates whether this CRM activity is associated with a automated stage.") 
     repeated = fields.Boolean("Repeated",help="It indicates when the activity has already been repeated.")
