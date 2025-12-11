@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'E Activity CRM',
-    'version': '19.2.0',
+    'version': '19.2.1',
     'summary': "Edit CRM for Activity Datetime ",
     'description':  "Add automatic activity creation upon lead creation based on configuration."
                     "Add periodic activity regeneration for CRM leads based on stage configuration.",

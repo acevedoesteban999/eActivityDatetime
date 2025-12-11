@@ -1,0 +1,194 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* e_activity_crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e-20251205\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-11 04:56+0000\n"
+"PO-Revision-Date: 2025-12-11 04:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: e_activity_crm
+#: model:ir.model,name:e_activity_crm.model_mail_activity
+msgid "Activity"
+msgstr ""
+
+#. module: e_activity_crm
+#. odoo-javascript
+#: code:addons/e_activity_crm/static/src/components/activity_datetime_model/activity_datetime.xml:0
+#: code:addons/xolary-erp/e_activity_crm/static/src/components/activity_datetime_model/activity_datetime.xml:0
+msgid "Activity Repeated"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__is_auto_create_activity
+#: model_terms:ir.ui.view,arch_db:e_activity_crm.res_config_settings_view_form_inherit_e_activity_crm
+msgid "Add Activity on create"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,field_description:e_activity_crm.field_crm_stage__allow_auto_create_activity
+msgid "Allow Auto Create Activity"
+msgstr ""
+
+#. module: e_activity_crm
+#: model_terms:ir.ui.view,arch_db:e_activity_crm.res_config_settings_view_form_inherit_e_activity_crm
+msgid "An activity will be automatically created when a new lead is created"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model,name:e_activity_crm.model_crm_stage
+msgid "CRM Stages"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model,name:e_activity_crm.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__auto_lead_time_deadline
+msgid "Default Activity Deadline"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__auto_lead_activity_type_id
+msgid "Default Activity Type"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,help:e_activity_crm.field_res_config_settings__auto_lead_activity_type_id
+msgid "Default activity type for the created activity on new lead"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,help:e_activity_crm.field_res_config_settings__auto_lead_time_deadline
+msgid "Default time deadline for the created activity on new lead"
+msgstr ""
+
+#. module: e_activity_crm
+#. odoo-python
+#: code:addons/e_activity_crm/models/crm_lead.py:0
+#: code:addons/xolary-erp/e_activity_crm/models/crm_lead.py:0
+msgid "Discovery Call"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,field_description:e_activity_crm.field_crm_lead__display_name
+#: model:ir.model.fields,field_description:e_activity_crm.field_crm_stage__display_name
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__display_name
+#: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,field_description:e_activity_crm.field_crm_lead__id
+#: model:ir.model.fields,field_description:e_activity_crm.field_crm_stage__id
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__id
+#: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__id
+msgid "ID"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,help:e_activity_crm.field_crm_stage__allow_auto_create_activity
+msgid ""
+"If checked, an activity will be automatically created when a lead reaches "
+"this stage."
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,help:e_activity_crm.field_res_config_settings__is_auto_create_activity
+msgid ""
+"If checked, an activity will be automatically created when a new lead is "
+"created."
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__is_periodic
+msgid ""
+"If checked, this activity will be created again after being marked as done."
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__in_crm_stage
+msgid "In CRM Stage"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__in_crm_stage
+msgid ""
+"Indicates whether this CRM activity is associated with a automated stage."
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__is_periodic
+msgid "Is Periodic"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__repeated
+msgid "It indicates when the activity has already been repeated."
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model,name:e_activity_crm.model_crm_lead
+msgid "Lead"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__repetition_period
+msgid "Number of days after which the activity will be created again"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.actions.server,name:e_activity_crm.ir_cron_regenerate_repetitive_activities_ir_actions_server
+msgid "Regenerate Repetitive Activities"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__repeated
+msgid "Repeated"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__repetition_period
+msgid "Repetition Period (Days)"
+msgstr ""
+
+#. module: e_activity_crm
+#. odoo-javascript
+#: code:addons/e_activity_crm/static/src/components/activity_datetime_model/activity_datetime_model_patch.js:0
+#: code:addons/xolary-erp/e_activity_crm/static/src/components/activity_datetime_model/activity_datetime_model_patch.js:0
+msgid "Schedule Activity"
+msgstr ""
+
+#. module: e_activity_crm
+#. odoo-python
+#: code:addons/e_activity_crm/models/crm_lead.py:0
+#: code:addons/xolary-erp/e_activity_crm/models/crm_lead.py:0
+msgid "The default activity type configured in CRM settings no longer exists."
+msgstr ""
+
+#. module: e_activity_crm
+#: model_terms:ir.ui.view,arch_db:e_activity_crm.e_activity_crm_inherit_mail_activity_form
+msgid "This CRM activity is not in an automatic repetition stage"
+msgstr ""
+
+#. module: e_activity_crm
+#. odoo-python
+#: code:addons/e_activity_crm/models/crm_lead.py:0
+#: code:addons/xolary-erp/e_activity_crm/models/crm_lead.py:0
+msgid "This is an automatic activity created upon lead creation."
+msgstr ""
+
+#. module: e_activity_crm
+#: model_terms:ir.ui.view,arch_db:e_activity_crm.e_activity_crm_inherit_mail_activity_form
+msgid "You can’t edit this activity. It has already been repeated."
+msgstr ""
