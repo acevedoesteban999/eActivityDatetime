@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="e_activity_crm_inherit_mail_activity_form" model="ir.ui.view">
+        <field name="name">mail.activity.view.form.inherit</field>
+        <field name="model">mail.activity</field>
+        <field name="inherit_id" ref="mail.mail_activity_view_form_popup"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="before">
+                <group invisible="res_model != 'crm.lead'">
+                    <group invisible="not in_crm_stage or repeated">
+                        <field name="is_periodic"/>
+                        <field name="repetition_period" required="is_periodic" invisible="not is_periodic"/>
+                    </group>
+                    <div invisible="in_crm_stage" class="text-muted">
+                        This CRM activity is not in an automatic repetition stage
+                    </div>
+                    <div invisible="not repeated" class="text-danger">
+                        You can’t edit this activity. It has already been repeated.
+                    </div>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
