@@ -4,9 +4,9 @@
 **Automatic & Recurring Activities for CRM Leads**  
 *Odoo 19 *
 
-
+---
 Whenever a lead is created, the system instantly schedules the activity you configured (type + local time) and, if desired, keeps cloning it at the interval you set until the lead moves out of the chosen stage.
-
+---
 
 ## Key Features
 

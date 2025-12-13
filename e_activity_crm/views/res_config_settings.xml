@@ -15,7 +15,7 @@
                         <field name="auto_lead_activity_type_id"
                             required="is_auto_create_activity"/>
                         <field name="auto_lead_time_deadline"
-                            widget="float_time"
+                            widget="float_time_tz"
                             required="is_auto_create_activity"/>
                     </div>
                     <div string="Periodic"

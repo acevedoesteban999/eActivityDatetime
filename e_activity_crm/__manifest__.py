@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'E Activity CRM',
-    'version': '19.4.0',
+    'version': '19.4.1',
     'summary': "Edit CRM for Activity Datetime ",
     'description':  "Add automatic activity creation upon lead creation based on configuration."
                     "Add periodic activity regeneration for CRM leads based on stage configuration.",
     'author': 'acevedoesteban999@gmail.com,esteban.acevedo@qa-bit.com',
-    'website': '',
+    'website': 'https://acevedoesteban999/eActivity',
     'category': '',
     'depends': ['base', 'web' , 'crm', 'e_activity_datetime', 'mail' ],
     'data': [

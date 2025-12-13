@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="e_activity_crm.FloatTimeTZ">
+        <small class="text-muted ms-1" t-esc="user_tz" />
+        <span t-if="props.readonly"  t-esc="formattedValue" />
+        <input
+            t-else=""
+            t-att-id="props.id"
+            t-att-type="props.inputType"
+            t-ref="numpadDecimal"
+            class="o_input"
+            autocomplete="off"
+            t-att-placeholder="'HH:MM'" />
+    
+    </t>
+</templates>

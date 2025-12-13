@@ -3,6 +3,7 @@ import { Activity } from '@mail/core/web/activity';
 import { computeDelay } from "@mail/utils/common/dates";
 import { browser } from "@web/core/browser/browser";
 import { formatDateTime } from "@web/core/l10n/dates";
+// import { user } from "@web/core/user";
 const { DateTime } = luxon;
 
 

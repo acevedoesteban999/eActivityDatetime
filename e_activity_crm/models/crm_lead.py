@@ -1,7 +1,6 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 from datetime import datetime,UTC
-from odoo.addons.e_activity_datetime.utils.date import get_server_utc_datetime
 from datetime import timedelta
 class CrmLead(models.Model):
     _inherit = 'crm.lead'
@@ -22,8 +21,9 @@ class CrmLead(models.Model):
         except ValueError:
             h, m = 8, 0
 
-        deadline_datetime = get_server_utc_datetime(h,m)
-        if deadline_datetime < datetime.now(UTC).replace(tzinfo=None):
+        now = datetime.now(UTC).replace(tzinfo=None)
+        deadline_datetime = now.replace(hour=h,minute=m,second=0)
+        if deadline_datetime < now:
             deadline_datetime += timedelta(days=1)
             
         activity_type_id = int(ICP.get_param('crm_lead_auto_activity.auto_lead_activity_type_id', default=0))
