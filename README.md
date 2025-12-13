@@ -1,7 +1,7 @@
 
 ## eActivity
 
-This repository contains a suite of Odoo modules designed to extend product customization capabilities by introducing a flexible "Design" feature. It integrates this functionality with Manufacturing (MRP), Point of Sale (POS), and the Odoo Website, creating a comprehensive solution for managing and selling customizable products.
+Allow schedules activities when a lead is created, using precise date and time (not just dates) with an "All Day" toggle option. It repeats the activity at your chosen intervals until the lead moves to a different stage, ensuring consistent follow-up without manual rescheduling.
 
 ----------------
 | Name                                  | Technical Name     | Summary                                          |
