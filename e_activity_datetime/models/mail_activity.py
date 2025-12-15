@@ -19,7 +19,7 @@ class MailActivity(models.Model):
     def _compute_datetime_deadline(self):
         for rec in self:
             if rec.all_day:
-                rec.datetime_deadline = datetime.now(UTC).replace(hour=7,minute=0,second=0)
+                rec.datetime_deadline = datetime.now(UTC).replace(hour=6,minute=0,second=0,tzinfo=None)
             
             else:
                 rec.datetime_deadline = rec.datetime_deadline or fields.Datetime.now().replace(second=0)
