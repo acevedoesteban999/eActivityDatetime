@@ -8,6 +8,7 @@ patch(Activity.prototype,{
     setup() {
         super.setup(...arguments);
         this.datetime_deadline = fields.Datetime();
+        this.datetime_start = fields.Datetime();
     },
     
     get dateDeadlineFormatted() {

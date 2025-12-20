@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0+e-20251205\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-08 17:14+0000\n"
-"PO-Revision-Date: 2025-12-08 12:17\n"
+"POT-Creation-Date: 2025-12-18 03:20+0000\n"
+"PO-Revision-Date: 2025-12-17 22:22\n"
 "Last-Translator: PoTranslator <acevedoesteban999@gmail.com>\n"
 "Language-Team: PoTranslator <acevedoesteban999@gmail.com>\n"
 "Language: es\n"
@@ -41,6 +41,26 @@ msgid "All Day"
 msgstr "Todo el día"
 
 #. module: e_activity_datetime
+#: model:ir.model.fields,field_description:e_activity_datetime.field_mail_activity__datetime_calendary
+msgid "Datetime Calendary"
+msgstr "Calendario de fecha y hora"
+
+#. module: e_activity_datetime
+#: model:ir.model.fields,field_description:e_activity_datetime.field_mail_activity__datetime_duration
+#: model:ir.model.fields,field_description:e_activity_datetime.field_mail_activity_schedule__datetime_duration
+msgid "Datetime Duration"
+msgstr "Duración"
+
+#. module: e_activity_datetime
+#. odoo-python
+#: code:addons/e_activity_datetime/models/mail_activity.py:0
+#: code:addons/e_activity_datetime/wizard/mail_activity_schedule.py:0
+#: code:addons/xolary-erp/e_activity_datetime/models/mail_activity.py:0
+#: code:addons/xolary-erp/e_activity_datetime/wizard/mail_activity_schedule.py:0
+msgid "Datetime start can not be after datetime end"
+msgstr "El inicio de la fecha no puede ser posterior al final de la fecha"
+
+#. module: e_activity_datetime
 #: model:ir.model.fields,field_description:e_activity_datetime.field_mail_activity__display_name
 #: model:ir.model.fields,field_description:e_activity_datetime.field_mail_activity_schedule__display_name
 #: model:ir.model.fields,field_description:e_activity_datetime.field_mail_activity_type__display_name
@@ -55,8 +75,8 @@ msgstr "Fecha de vencimiento"
 #. module: e_activity_datetime
 #: model:ir.model.fields,field_description:e_activity_datetime.field_mail_activity__datetime_deadline
 #: model:ir.model.fields,field_description:e_activity_datetime.field_mail_activity_schedule__datetime_deadline
-msgid "Due Date Time"
-msgstr "Tiempo de vencimiento"
+msgid "Due DateTime"
+msgstr "Fecha de vencimiento"
 
 #. module: e_activity_datetime
 #: model:ir.model.fields,field_description:e_activity_datetime.field_mail_activity__id
@@ -66,7 +86,23 @@ msgid "ID"
 msgstr "ID"
 
 #. module: e_activity_datetime
+#: model:ir.model.fields,field_description:e_activity_datetime.field_mail_activity__datetime_start
+#: model:ir.model.fields,field_description:e_activity_datetime.field_mail_activity_schedule__datetime_start
+msgid "Start DateTime"
+msgstr "Fecha de inicio"
+
+#. module: e_activity_datetime
 #. odoo-javascript
-#: code:addons/e_activity_datetime/static/src/core/web/e_activity_datetime.xml:0
-msgid "Today"
-msgstr "Hoy"
+#: code:addons/e_activity_datetime/static/src/core/web/activity_datetime.xml:0
+#: code:addons/xolary-erp/e_activity_datetime/static/src/core/web/activity_datetime.xml:0
+msgid "Today:"
+msgstr "Hoy:"
+
+#. module: e_activity_datetime
+#. odoo-javascript
+#: code:addons/e_activity_datetime/static/src/components/remaining_days_datetime/remaining_days_datetime_field.js:0
+#: code:addons/e_activity_datetime/static/src/core/web/activity_datetime.xml:0
+#: code:addons/xolary-erp/e_activity_datetime/static/src/components/remaining_days_datetime/remaining_days_datetime_field.js:0
+#: code:addons/xolary-erp/e_activity_datetime/static/src/core/web/activity_datetime.xml:0
+msgid "to"
+msgstr "a"

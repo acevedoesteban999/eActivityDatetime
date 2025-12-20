@@ -6,13 +6,10 @@
         <field name="inherit_id" ref="mail.mail_activity_schedule_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='note']" position="before">
-                <group invisible="res_model != 'crm.lead'">
+                <group invisible="res_model != 'crm.lead' or crm_type != 'lead'" >
                     <group>
-                        <field name="is_periodic"/>
-                        <field name="repetition_period_days" required="is_periodic" invisible="not is_periodic"/>
-                        <div class="text-muted">
-                            This CRM activity need a an 'automatic repetition stage' for function properly.
-                        </div>
+                        <field name="is_rescheduled"/>
+                        <field name="reschedule_days" required="is_rescheduled" invisible="not is_rescheduled"/>
                     </group>
                 </group>
             </xpath>

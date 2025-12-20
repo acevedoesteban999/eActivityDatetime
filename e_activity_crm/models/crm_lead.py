@@ -8,71 +8,72 @@ class CrmLead(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         leads = super().create(vals_list)
-
-        ICP = self.env['ir.config_parameter'].sudo()
-        is_activity_on_create = bool(ICP.get_param('crm_lead_auto_activity.is_auto_create_activity', default=False))
-        if not is_activity_on_create:
-            return leads
-        auto_lead_time_str = ICP.get_param('crm_lead_auto_activity.auto_lead_time_deadline', default='7.0')
-        
-        try:
-            h = int(float(auto_lead_time_str))
-            m = int(round((float(auto_lead_time_str) - h) * 60))
-        except ValueError:
-            h, m = 8, 0
-
-        now = datetime.now(UTC).replace(tzinfo=None)
-        deadline_datetime = now.replace(hour=h,minute=m,second=0)
-        if deadline_datetime < now:
-            deadline_datetime += timedelta(days=1)
+        for lead in leads:
+            if lead.type != 'lead':
+                continue
+            ICP = self.env['ir.config_parameter'].sudo()
+            is_activity_on_create = bool(ICP.get_param('crm_lead_auto_activity.is_auto_create_activity', default=False))
+            if not is_activity_on_create:
+                continue
             
-        activity_type_id = int(ICP.get_param('crm_lead_auto_activity.auto_lead_activity_type_id', default=0))
-        if not activity_type_id:
-            return leads
-        try:
-            periodic_vals = {
-                'is_periodic': bool(ICP.get_param('crm_lead_auto_activity.auto_is_periodic', default=False)),
-                'repetition_period_days': int(ICP.get_param('crm_lead_auto_activity.auto_repetition_period_days_days', default=0)),
+            activity_type_id = int(ICP.get_param('crm_lead_auto_activity.auto_lead_activity_type_id', default=0))
+            if not activity_type_id:
+                continue
+            
+            auto_lead_time_str = ICP.get_param('crm_lead_auto_activity.auto_lead_time_deadline', default='7.0')
+            try:
+                h = int(float(auto_lead_time_str))
+                m = int(round((float(auto_lead_time_str) - h) * 60))
+            except ValueError:
+                h, m = 8, 0
+
+            now = datetime.now(UTC).replace(tzinfo=None)
+            deadline_datetime = now.replace(hour=h,minute=m,second=0)
+            if deadline_datetime < now:
+                deadline_datetime += timedelta(days=1)
+                
+            activity_type = self.env['mail.activity.type'].browse(activity_type_id).exists()
+            if not activity_type:
+                raise UserError(_('The default activity type configured in CRM settings no longer exists.'))
+            
+            activity = {
+                'res_id': lead.id,
+                'res_model_id': self.env['ir.model']._get_id('crm.lead'),
+                'activity_type_id': activity_type.id,
+                'summary': _("Discovery Call") ,
+                'note': _('This is an automatic activity created upon lead start.'),
+                'date_deadline': fields.Date.context_today(self),
+                'datetime_deadline': deadline_datetime,
+                'all_day':False,
+                'user_id': lead.user_id.id or self.env.user.id,
+                'is_rescheduled':True,
+                'reschedule_days': 1,   
             }
-        except:
-            periodic_vals = {}
-        activity_type = self.env['mail.activity.type'].browse(activity_type_id).exists()
-        if not activity_type:
-            raise UserError(_('The default activity type configured in CRM settings no longer exists.'))
-        
-        activities = [{
-            'res_id': lead.id,
-            'res_model_id': self.env['ir.model']._get_id('crm.lead'),
-            'activity_type_id': activity_type.id,
-            'summary': _("Discovery Call") ,
-            'note': _('This is an automatic activity created upon lead start.'),
-            'date_deadline': fields.Date.context_today(self),
-            'datetime_deadline': deadline_datetime,
-            'all_day':False,
-            'user_id': lead.user_id.id or self.env.user.id,
-            **periodic_vals,
             
-        } for lead in leads]
-        
-        self.env['mail.activity'].create(activities)
+            self.env['mail.activity'].create(activity)
 
         return leads
     
     
     def _cron_regenerate_repetitive_activities(self):
         activities = self.env['mail.activity'].search([
-            ('active','=',True),
+            ('active','=',False),
             ('res_model','=','crm.lead'),
-            ('is_periodic','=',True),
-            ('repeated','=',False),
-            ('repetition_period_days','>',0),
-        ]).filtered(lambda rec: rec.state == 'overdue' and rec.in_crm_stage)
+            ('is_rescheduled','=',True),
+            ('done_reschedule','=',False),
+        ])
         
-        for activity in activities:
+        for activity in activities.filtered(lambda rec: rec.crm_type == 'lead'):
+            datetime_done = activity.datetime_deadline.replace(
+                year = activity.date_done.year,
+                month = activity.date_done.month,
+                day = activity.date_done.day,
+                ) + timedelta(days=activity.reschedule_days)
             activity.copy({
-                'datetime_deadline': activity.datetime_deadline + timedelta(days=activity.repetition_period_days),
-                'date_deadline': activity.date_deadline + timedelta(days=activity.repetition_period_days),
-                'note': f"[{_('REPEATED')}]" + activity.note,
+                'active':True,
+                'datetime_deadline': datetime_done,
+                'date_deadline': datetime_done,
+                'note':  activity.note,
             })
-            activity.repeated = True,
+            activity.done_reschedule = True
             activity.env.cr.commit()

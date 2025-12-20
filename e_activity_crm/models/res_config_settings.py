@@ -19,14 +19,3 @@ class ResConfigSettings(models.TransientModel):
         help="Default time deadline for the created activity on new lead",
         config_parameter='crm_lead_auto_activity.auto_lead_time_deadline',
     )
-    auto_is_periodic = fields.Boolean(
-        string='Make Activity Periodic',
-        config_parameter='crm_lead_auto_activity.auto_is_periodic',
-        help="If checked, the created activity will be periodic.",
-    )
-    auto_repetition_period_days_days = fields.Integer(
-        string='Repetition Period (days)',
-        config_parameter='crm_lead_auto_activity.auto_repetition_period_days_days',
-        help="Number of days between each repetition of the activity.",
-        default=1,
-    )

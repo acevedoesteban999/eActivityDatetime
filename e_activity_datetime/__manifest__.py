@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'E Activity DateTime',
-    'version': '19.3.1',
+    'version': '19.4.1',
     'summary': """ Activity DateTime """,
     'author': 'acevedoesteban999@gmail.com , esteban.acevedo@qa-bit.com',
     'website': 'https://acevedoesteban999/eActivity',

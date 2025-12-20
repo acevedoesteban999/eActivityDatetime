@@ -6,6 +6,7 @@ import { getClassNameFromDecoration } from "@web/views/utils";
 import { RemainingDaysField , remainingDaysField } from "@web/views/fields/remaining_days/remaining_days_field";
 import { formatDate } from "@web/views/fields/formatters";
 import { capitalize } from "@web/core/utils/strings";
+import { _t } from "@web/core/l10n/translation";
 const { DateTime } = luxon;
 
 export class ERemainingDaysDatetime extends RemainingDaysField {
@@ -45,10 +46,15 @@ export class ERemainingDaysDatetime extends RemainingDaysField {
       return super.classNames
       
     }
-
+    get showDatetimeStart(){
+        return this.props.record.data.datetime_start && this.props.record.data.datetime_start.day == this.props.record.data.datetime_deadline.day
+    }
     get dateTimeValue(){
-      if(!this.props.record.data.all_day && Math.abs(this.diffDays) <= 2)
+      if(!this.props.record.data.all_day && Math.abs(this.diffDays) <= 2){
+        if(this.showDatetimeStart)
+          return " (" + this.props.record.data.datetime_start.toFormat('HH:mm ') + _t('to') + this.props.record.data.datetime_deadline.toFormat(' HH:mm') + ")";
         return " (" + this.props.record.data.datetime_deadline.toFormat('HH:mm') + ")";
+      }
       return ""
     }
 

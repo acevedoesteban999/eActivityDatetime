@@ -8,7 +8,12 @@
         </xpath>
         <xpath expr="//div[hasclass('o-mail-Activity-info')]//span[@t-else='']" position="after">
             <t t-if="!props.activity.all_day and [0,1,-1].includes(delay) ">
-               <em class="ps-1 text-muted" t-esc="datetimeDeadLine"/> 
+               <t t-if="showDatetimeStart">
+                    <em class="ps-1 text-muted" t-esc="datetimeStart"/> 
+                    to     
+                    <em class="text-muted" t-esc="datetimeDeadLine"/> 
+               </t>
+               <em t-else="" class="ps-1 text-muted" t-esc="datetimeDeadLine"/> 
             </t>
         </xpath>
     </t>

@@ -11,6 +11,12 @@ patch(Activity.prototype,{
     setup() {
         super.setup(...arguments);
     },
+    get showDatetimeStart(){
+        return this.props.activity.datetime_start && this.props.activity.datetime_start.day == this.props.activity.datetime_deadline.day;
+    },
+    get datetimeStart(){
+        return formatDateTime(this.props.activity.datetime_start,{format:"HH:mm"});
+    },
     get datetimeDeadLine(){
         return formatDateTime(this.props.activity.datetime_deadline,{format:"HH:mm"});
     },

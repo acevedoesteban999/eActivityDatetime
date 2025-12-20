@@ -6,17 +6,12 @@
         <field name="inherit_id" ref="mail.mail_activity_view_form_popup"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='user_id']" position="before">
-                <group invisible="res_model != 'crm.lead'">
-                    <group invisible="not in_crm_stage or repeated">
-                        <field name="is_periodic"/>
-                        <field name="repetition_period_days" required="is_periodic" invisible="not is_periodic"/>
+                <group invisible="res_model != 'crm.lead' or crm_type != 'lead'">
+                    <group >
+                        <field name="is_rescheduled"/>
+                        <field name="reschedule_days" required="is_rescheduled" invisible="not is_rescheduled"/>
+                        <field name="done_reschedule" invisible="not done_reschedule" />
                     </group>
-                    <div invisible="in_crm_stage" class="text-muted">
-                        This CRM activity is not in an automatic repetition stage
-                    </div>
-                    <div invisible="not repeated" class="text-danger">
-                        You can’t edit this activity. It has already been repeated.
-                    </div>
                 </group>
             </xpath>
         </field>

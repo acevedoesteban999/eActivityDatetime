@@ -1,19 +1,26 @@
-from odoo import models,fields,api
+from odoo import models,fields
 
 class MailActivity(models.Model):
     _inherit = 'mail.activity'
     
-    is_periodic = fields.Boolean("Is Periodic",default=False,help="The activity will be recreated after it reaches the 'Overdue' state.")
-    repetition_period_days = fields.Integer("Repetition Period (Days)",default=1,help="Number of days after which the activity will be created again")
-    in_crm_stage = fields.Boolean("In CRM Stage",compute="_compute_in_crm_stage",help="Indicates whether this CRM activity is associated with a automated stage.") 
-    repeated = fields.Boolean("Repeated",help="It indicates when the activity has already been repeated.")
-    def _compute_in_crm_stage(self):
+    is_rescheduled = fields.Boolean("Is Rescheduled",default=False,help="The activity will be rescheduled when has 'done' until convert to oportunity")
+    reschedule_days = fields.Integer("Reschedule Days",default=1,help="Number of days after the activity will be schedule")
+    done_reschedule = fields.Boolean("Done Reschedule",readonly=True,default=False,help="Indicates that the rescheduling process has been completed.")
+    crm_type = fields.Char("CRM Type",compute="_compute_crm_type",help="") 
+    def _compute_crm_type(self):
         for rec in self:
-            if rec.res_model == 'crm.lead' and rec.res_id:
-                lead = self.env['crm.lead'].browse(rec.res_id)
-                rec.in_crm_stage =  lead.stage_id.allow_auto_create_activity
+            if rec.res_model == 'crm.lead' and rec.res_id :
+                rec.crm_type =  rec.env['crm.lead'].browse(rec.res_id).type
             else:
-                rec.in_crm_stage = False
-                
-    def _to_store_defaults(self, target):
-        return super()._to_store_defaults(target) + ['repeated']
+                rec.crm_type = False
+
+    def action_feedback_schedule_next(self, feedback=False, attachment_ids=None):
+        action = super().action_feedback_schedule_next(feedback=feedback, attachment_ids=attachment_ids)
+        if self.is_rescheduled:
+            self.write({'done_reschedule': True})
+            action['context'] = {
+                **action.get('context',{}),
+                'default_is_rescheduled': True,
+                'default_reschedule_days': self.reschedule_days,
+            }
+        return action

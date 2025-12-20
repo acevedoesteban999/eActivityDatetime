@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0+e-20251205\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-11 17:53+0000\n"
-"PO-Revision-Date: 2025-12-11 17:53+0000\n"
+"POT-Creation-Date: 2025-12-19 17:17+0000\n"
+"PO-Revision-Date: 2025-12-19 17:17+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -32,28 +32,19 @@ msgid "Add Activity on create"
 msgstr ""
 
 #. module: e_activity_crm
-#: model:ir.model.fields,field_description:e_activity_crm.field_crm_stage__allow_auto_create_activity
-msgid "Allow Auto Create Activity"
-msgstr ""
-
-#. module: e_activity_crm
 #: model_terms:ir.ui.view,arch_db:e_activity_crm.res_config_settings_view_form_inherit_e_activity_crm
 msgid "An activity will be automatically created when a new lead is created"
 msgstr ""
 
 #. module: e_activity_crm
-#: model:ir.model,name:e_activity_crm.model_crm_stage
-msgid "CRM Stages"
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__crm_type
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity_schedule__crm_type
+msgid "CRM Type"
 msgstr ""
 
 #. module: e_activity_crm
 #: model:ir.model,name:e_activity_crm.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
-
-#. module: e_activity_crm
-#: model_terms:ir.ui.view,arch_db:e_activity_crm.res_config_settings_view_form_inherit_e_activity_crm
-msgid "Day(s)"
 msgstr ""
 
 #. module: e_activity_crm
@@ -85,7 +76,6 @@ msgstr ""
 
 #. module: e_activity_crm
 #: model:ir.model.fields,field_description:e_activity_crm.field_crm_lead__display_name
-#: model:ir.model.fields,field_description:e_activity_crm.field_crm_stage__display_name
 #: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__display_name
 #: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity_schedule__display_name
 #: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__display_name
@@ -93,19 +83,23 @@ msgid "Display Name"
 msgstr ""
 
 #. module: e_activity_crm
+#. odoo-javascript
+#: code:addons/e_activity_crm/static/src/components/float_time_tz/float_time_tz.js:0
+#: code:addons/xolary-erp/e_activity_crm/static/src/components/float_time_tz/float_time_tz.js:0
+msgid "Display seconds"
+msgstr ""
+
+#. module: e_activity_crm
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__done_reschedule
+msgid "Done Reschedule"
+msgstr ""
+
+#. module: e_activity_crm
 #: model:ir.model.fields,field_description:e_activity_crm.field_crm_lead__id
-#: model:ir.model.fields,field_description:e_activity_crm.field_crm_stage__id
 #: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__id
 #: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity_schedule__id
 #: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__id
 msgid "ID"
-msgstr ""
-
-#. module: e_activity_crm
-#: model:ir.model.fields,help:e_activity_crm.field_crm_stage__allow_auto_create_activity
-msgid ""
-"If checked, an activity will be automatically created when a lead reaches "
-"this stage."
 msgstr ""
 
 #. module: e_activity_crm
@@ -116,30 +110,14 @@ msgid ""
 msgstr ""
 
 #. module: e_activity_crm
-#: model:ir.model.fields,help:e_activity_crm.field_res_config_settings__auto_is_periodic
-msgid "If checked, the created activity will be periodic."
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__done_reschedule
+msgid "Indicates that the rescheduling process has been completed."
 msgstr ""
 
 #. module: e_activity_crm
-#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__in_crm_stage
-msgid "In CRM Stage"
-msgstr ""
-
-#. module: e_activity_crm
-#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__in_crm_stage
-msgid ""
-"Indicates whether this CRM activity is associated with a automated stage."
-msgstr ""
-
-#. module: e_activity_crm
-#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__is_periodic
-#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity_schedule__is_periodic
-msgid "Is Periodic"
-msgstr ""
-
-#. module: e_activity_crm
-#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__repeated
-msgid "It indicates when the activity has already been repeated."
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__is_rescheduled
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity_schedule__is_rescheduled
+msgid "Is Rescheduled"
 msgstr ""
 
 #. module: e_activity_crm
@@ -148,31 +126,9 @@ msgid "Lead"
 msgstr ""
 
 #. module: e_activity_crm
-#: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__auto_is_periodic
-msgid "Make Activity Periodic"
-msgstr ""
-
-#. module: e_activity_crm
-#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__repetition_period_days
-#: model:ir.model.fields,help:e_activity_crm.field_mail_activity_schedule__repetition_period_days
-msgid "Number of days after which the activity will be created again"
-msgstr ""
-
-#. module: e_activity_crm
-#: model:ir.model.fields,help:e_activity_crm.field_res_config_settings__auto_repetition_period_days_days
-msgid "Number of days between each repetition of the activity."
-msgstr ""
-
-#. module: e_activity_crm
-#: model_terms:ir.ui.view,arch_db:e_activity_crm.res_config_settings_view_form_inherit_e_activity_crm
-msgid "Periodic"
-msgstr ""
-
-#. module: e_activity_crm
-#. odoo-python
-#: code:addons/e_activity_crm/models/crm_lead.py:0
-#: code:addons/xolary-erp/e_activity_crm/models/crm_lead.py:0
-msgid "REPEATED"
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__reschedule_days
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity_schedule__reschedule_days
+msgid "Number of days after the activity will be schedule"
 msgstr ""
 
 #. module: e_activity_crm
@@ -181,44 +137,16 @@ msgid "Regenerate Repetitive Activities"
 msgstr ""
 
 #. module: e_activity_crm
-#: model_terms:ir.ui.view,arch_db:e_activity_crm.res_config_settings_view_form_inherit_e_activity_crm
-msgid "Repeat"
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__reschedule_days
+#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity_schedule__reschedule_days
+msgid "Reschedule Days"
 msgstr ""
 
 #. module: e_activity_crm
-#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__repeated
-msgid "Repeated"
-msgstr ""
-
-#. module: e_activity_crm
-#. odoo-javascript
-#: code:addons/e_activity_crm/static/src/components/activity_datetime_model/activity_datetime.xml:0
-#: code:addons/xolary-erp/e_activity_crm/static/src/components/activity_datetime_model/activity_datetime.xml:0
-msgid "Repeated Activity"
-msgstr ""
-
-#. module: e_activity_crm
-#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity__repetition_period_days
-#: model:ir.model.fields,field_description:e_activity_crm.field_mail_activity_schedule__repetition_period_days
-msgid "Repetition Period (Days)"
-msgstr ""
-
-#. module: e_activity_crm
-#: model:ir.model.fields,field_description:e_activity_crm.field_res_config_settings__auto_repetition_period_days_days
-msgid "Repetition Period (days)"
-msgstr ""
-
-#. module: e_activity_crm
-#. odoo-javascript
-#: code:addons/e_activity_crm/static/src/components/activity_datetime_model/activity_datetime_model_patch.js:0
-#: code:addons/xolary-erp/e_activity_crm/static/src/components/activity_datetime_model/activity_datetime_model_patch.js:0
-msgid "Schedule Activity"
-msgstr ""
-
-#. module: e_activity_crm
-#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__is_periodic
-#: model:ir.model.fields,help:e_activity_crm.field_mail_activity_schedule__is_periodic
-msgid "The activity will be recreated after it reaches the 'Overdue' state."
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity__is_rescheduled
+#: model:ir.model.fields,help:e_activity_crm.field_mail_activity_schedule__is_rescheduled
+msgid ""
+"The activity will be rescheduled when has 'done' until convert to oportunity"
 msgstr ""
 
 #. module: e_activity_crm
@@ -229,18 +157,6 @@ msgid "The default activity type configured in CRM settings no longer exists."
 msgstr ""
 
 #. module: e_activity_crm
-#: model_terms:ir.ui.view,arch_db:e_activity_crm.e_activity_crm_inherit_mail_activity_form
-msgid "This CRM activity is not in an automatic repetition stage"
-msgstr ""
-
-#. module: e_activity_crm
-#: model_terms:ir.ui.view,arch_db:e_activity_crm.e_activity_crm_inherit_mail_activity_schedule
-msgid ""
-"This CRM activity need a an 'automatic repetition stage' for function "
-"properly."
-msgstr ""
-
-#. module: e_activity_crm
 #. odoo-python
 #: code:addons/e_activity_crm/models/crm_lead.py:0
 #: code:addons/xolary-erp/e_activity_crm/models/crm_lead.py:0
@@ -248,6 +164,22 @@ msgid "This is an automatic activity created upon lead start."
 msgstr ""
 
 #. module: e_activity_crm
-#: model_terms:ir.ui.view,arch_db:e_activity_crm.e_activity_crm_inherit_mail_activity_form
-msgid "You can’t edit this activity. It has already been repeated."
+#. odoo-javascript
+#: code:addons/e_activity_crm/static/src/components/float_time_tz/float_time_tz.js:0
+#: code:addons/xolary-erp/e_activity_crm/static/src/components/float_time_tz/float_time_tz.js:0
+msgid "Time (TZ)"
+msgstr ""
+
+#. module: e_activity_crm
+#. odoo-javascript
+#: code:addons/e_activity_crm/static/src/components/float_time_tz/float_time_tz.js:0
+#: code:addons/xolary-erp/e_activity_crm/static/src/components/float_time_tz/float_time_tz.js:0
+msgid "Time must be between 00:00 and 23:59"
+msgstr ""
+
+#. module: e_activity_crm
+#. odoo-javascript
+#: code:addons/e_activity_crm/static/src/components/float_time_tz/float_time_tz.js:0
+#: code:addons/xolary-erp/e_activity_crm/static/src/components/float_time_tz/float_time_tz.js:0
+msgid "Type"
 msgstr ""
